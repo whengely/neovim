@@ -10,6 +10,8 @@ end
 
 require("luasnip/loaders/from_vscode").lazy_load()
 
+require("cmp-npm").setup()
+
 local check_backspace = function()
   local col = vim.fn.col "." - 1
   return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
@@ -101,6 +103,7 @@ cmp.setup {
       vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
       -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
       vim_item.menu = ({
+        npm = "[npm]",
         nvim_lsp = "[LSP]",
         luasnip = "[Snippet]",
         buffer = "[Buffer]",
@@ -110,10 +113,14 @@ cmp.setup {
     end,
   },
   sources = {
+    { name = "npm" },
     { name = "nvim_lsp" },
-    { name = "luasnip" },
-    { name = "buffer" },
-    { name = "path" },
+    --{ name = "buffer" },
+    -- { name = "luasnip" },
+    --{ name = "path" },
+  },
+  sorting = {
+    priority_weight = 45,
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,

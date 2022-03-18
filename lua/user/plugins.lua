@@ -70,6 +70,7 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-cmdline" -- cmdline completions
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use "hrsh7th/cmp-nvim-lsp"
+  use "David-Kunz/cmp-npm" -- package.json completion
 
   -- snippets
   use "L3MON4D3/LuaSnip" --snippet engine
@@ -93,6 +94,15 @@ return packer.startup(function(use)
 
   -- Git
   use "lewis6991/gitsigns.nvim"
+
+  -- Utilities
+  use { "bennypowers/nvim-regexplainer",
+    config = function() require'regexplainer'.setup() end,
+    requires = {
+              'nvim-lua/plenary.nvim',
+        'MunifTanjim/nui.nvim',
+    }
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
