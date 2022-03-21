@@ -97,7 +97,6 @@ return packer.startup(function(use)
 
   -- Utilities
   use { "bennypowers/nvim-regexplainer",
-    config = function() require'regexplainer'.setup() end,
     requires = {
               'nvim-lua/plenary.nvim',
         'MunifTanjim/nui.nvim',
