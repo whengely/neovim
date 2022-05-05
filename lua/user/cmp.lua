@@ -125,8 +125,8 @@ cmp.setup {
         }
     },
     confirm_opts = {behavior = cmp.ConfirmBehavior.Replace, select = false},
-    documentation = {
-        border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"}
+    window = {
+        bordered = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"}
     },
     experimental = {ghost_text = false, native_menu = false}
 }
