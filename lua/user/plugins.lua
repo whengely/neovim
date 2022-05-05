@@ -1,3 +1,4 @@
+-- @diagnostic disable: 111
 local fn = vim.fn
 
 -- Automatically install packer
@@ -50,7 +51,7 @@ return packer.startup(function(use)
   use("goolord/alpha-nvim")
   use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
   use("folke/which-key.nvim")
-  use "folke/lua-dev.nvim"
+  use("folke/lua-dev.nvim")
 
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
@@ -72,10 +73,13 @@ return packer.startup(function(use)
   -- LSP
   use("neovim/nvim-lspconfig") -- enable LSP
   use({
+    "tamago324/nlsp-settings.nvim",
+    config = { append_default_schemas = true }
+  }) -- language server settings defined in json for
+  use({
     "williamboman/nvim-lsp-installer",
     config = { automatic_installation = true }
   }) -- simple to use language server installer
-  use("tamago324/nlsp-settings.nvim") -- language server settings defined in json for
   use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
   use({ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" })
 
@@ -99,5 +103,6 @@ return packer.startup(function(use)
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
+  ---@diagnostic disable-next-line: 113
   if PACKER_BOOTSTRAP then require("packer").sync() end
 end)
