@@ -53,9 +53,13 @@ return packer.startup(function(use)
   use("folke/which-key.nvim")
   use("folke/lua-dev.nvim")
 
-  -- Colorschemes
-  -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-  use("lunarvim/darkplus.nvim")
+  -- Graphical
+  use("olimorris/onedarkpro.nvim")
+  use({
+    "akinsho/bufferline.nvim",
+    tag = "v2.*",
+    requires = "kyazdani42/nvim-web-devicons"
+  })
 
   -- cmp plugins
   use("hrsh7th/nvim-cmp") -- The completion plugin
