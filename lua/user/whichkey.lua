@@ -119,7 +119,11 @@ local mappings = {
     t = { "<cmd>Neogit<cr>", "Commit" },
     p = { "<cmd>!git publish<cr>", "Publish" },
     P = { "<cmd>!git create-pull-request<cr>", "Pull Request" },
-    u = { "<cmd>!git push<cr>", "Push" }
+    u = { "<cmd>!git push<cr>", "Push" },
+    B = {
+      "<cmd>lua require('user.functions.git-helpers').createBranch()<cr>",
+      "Branch"
+    }
   },
 
   l = {

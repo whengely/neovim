@@ -60,6 +60,7 @@ return packer.startup(function(use)
     tag = "v2.*",
     requires = "kyazdani42/nvim-web-devicons"
   })
+  use({ "stevearc/dressing.nvim" })
 
   -- cmp plugins
   use("hrsh7th/nvim-cmp") -- The completion plugin
