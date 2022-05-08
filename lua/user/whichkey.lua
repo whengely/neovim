@@ -120,10 +120,7 @@ local mappings = {
     p = { "<cmd>!git publish<cr>", "Publish" },
     P = { "<cmd>!git create-pull-request<cr>", "Pull Request" },
     u = { "<cmd>!git push<cr>", "Push" },
-    B = {
-      "<cmd>lua require('user.functions.git-helpers').createBranch()<cr>",
-      "Branch"
-    }
+    B = { "<cmd>lua require('utils').createBranch()<cr>", "Branch" }
   },
 
   l = {
