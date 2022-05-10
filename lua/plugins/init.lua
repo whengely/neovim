@@ -61,6 +61,7 @@ return packer.startup(function(use)
 		run = ":TSUpdate",
 		config = require("plugins.configs.treesitter"),
 	})
+	use({ "stevearc/dressing.nvim", config = require("plugins.configs.dressing") })
 
 	-- Utilities
 	use({

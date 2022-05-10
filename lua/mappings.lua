@@ -112,12 +112,13 @@ local mappings = {
 		o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
 		b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
 		c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
+		C = { "<cmd>!git close-branch<cr>", "Close branch" },
 		d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff" },
 		t = { "<cmd>Neogit<cr>", "Commit" },
 		p = { "<cmd>!git publish<cr>", "Publish" },
 		P = { "<cmd>!git create-pull-request<cr>", "Pull Request" },
 		u = { "<cmd>!git push<cr>", "Push" },
-		B = { "<cmd>lua require('utils.git').createBranch()<cr>", "Branch" },
+		B = { "<cmd>lua require('utils').createBranch()<cr>", "Branch" },
 	},
 
 	l = {
