@@ -92,6 +92,8 @@ local mappings = {
 	["["] = { "<cmd>bp<cr>", "Go next buffer" },
 	c = { "<cmd>bd<cr>", "Close current buffer" },
 	b = { "<cmd>Telescope buffers<cr>", "Find buffers" },
+	f = { "<cmd>Telescope find_files hidden=true no_ignore=true<cr>", "Find File" },
+	F = { "<cmd>Telescope live_grep<cr>", "Find File by grep" },
 
 	p = {
 		name = "Packer",
@@ -154,8 +156,6 @@ local mappings = {
 		m = { "<cmd>Telescope marks<cr>", "Marks" },
 		k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
 		C = { "<cmd>Telescope commands<cr>", "Commands" },
-		f = { "<cmd>Telescope find_files hidden=true no_ignore=true<cr>", "Find File" },
-		F = { "<cmd>Telescope live_grep<cr>", "Find File by grep" },
 	},
 }
 
