@@ -86,6 +86,10 @@ return packer.startup(function(use)
 	use({
 		"RRethy/vim-illuminate",
 	})
+	use({
+		"akinsho/toggleterm.nvim",
+		config = require("plugins.configs.toggleterm"),
+	})
 
 	-- LSP
 	use({
@@ -119,6 +123,7 @@ return packer.startup(function(use)
 		},
 		config = require("plugins.configs.cmp"),
 	})
+	use({ "David-Kunz/cmp-npm", config = require("plugins.configs.cmp-npm") }) -- package.json completion
 
 	-- -- Snippets
 	use({ "kitagry/vs-snippets" })

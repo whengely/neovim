@@ -80,6 +80,7 @@ local opts = {
 }
 
 local mappings = {
+	["a"] = { "<cmd>Alpha<cr>", "Alpha" },
 	-- [[Illuminate]]
 	["<Tab>"] = { "<cmd>lua require'illuminate'.next_reference{wrap=true}<cr>", "[ILLUMINATE] Next reference" },
 	["<S-Tab>"] = {
@@ -106,7 +107,7 @@ local mappings = {
 
 	g = {
 		name = "Git",
-		g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
+		g = { "<cmd>!git pull<CR>", "Pull" },
 		l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
 		R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
 		o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
@@ -157,6 +158,14 @@ local mappings = {
 		m = { "<cmd>Telescope marks<cr>", "Marks" },
 		k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
 		C = { "<cmd>Telescope commands<cr>", "Commands" },
+	},
+
+	t = {
+		name = "Terminal",
+		f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
+		h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
+		t = { "<cmd>ToggleTermToggleAll<cr>", "Toggle all" },
+		v = { "<cmd>ToggleTerm size=60 direction=vertical<cr>", "Vertical" },
 	},
 }
 
