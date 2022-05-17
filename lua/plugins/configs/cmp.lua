@@ -4,6 +4,8 @@ if not ok then
 	return
 end
 
+local compare = cmp.config.compare
+
 --   פּ ﯟ   some other good icons
 local kind_icons = {
 	Text = "",
@@ -49,26 +51,6 @@ cmp.setup({
 		keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
 		keyword_length = 1,
 	},
-	formatting = {
-		fields = { "kind", "abbr", "menu" },
-		format = function(entry, vim_item)
-			-- Kind icons
-			vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-			vim_item.menu = ({
-				npm = "[npm]",
-				nvim_lsp = "[LSP]",
-				luasnip = "[Snippet]",
-				buffer = "[Buffer]",
-				path = "[Path]",
-			})[entry.source.name]
-			return vim_item
-		end,
-	},
-	snippet = {
-		expand = function(args)
-			vim.fn["vsnip#anonymous"](args.body)
-		end,
-	},
 	mapping = {
 		["<C-d>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -105,6 +87,29 @@ cmp.setup({
 			select = false,
 		}),
 	},
+	formatting = {
+		fields = { "kind", "abbr", "menu" },
+		format = function(entry, vim_item)
+			-- Kind icons
+			vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+			vim_item.menu = ({
+				npm = "[npm]",
+				nvim_lsp = "[LSP]",
+				nvim_lua = "[Lua]",
+				vsnip = "[VSnippet]",
+				luasnip = "[Snippet]",
+				buffer = "[Buffer]",
+				path = "[Path]",
+				nvim_lsp_signature_help = "[LSP Sig]",
+			})[entry.source.name]
+			return vim_item
+		end,
+	},
+	snippet = {
+		expand = function(args)
+			vim.fn["vsnip#anonymous"](args.body)
+		end,
+	},
 	sources = {
 		{ name = "npm" },
 		{ name = "nvim_lsp" },
@@ -113,6 +118,23 @@ cmp.setup({
 		{ name = "path" },
 		{ name = "buffer" },
 		{ name = "nvim_lsp_signature_help" },
+	},
+	sorting = {
+		priority_weight = 1.0,
+		comparators = {
+			-- compare.score_offset, --not good at all
+			compare.locality,
+			compare.recently_used,
+			compare.score,
+			-- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
+			compare.offset,
+			compare.order,
+			-- compare.scopes, -- what?
+			-- compare.sort_text,
+			-- compare.exact,
+			-- compare.kind,
+			-- compare.length, -- useless
+		},
 	},
 	preselect = cmp.PreselectMode.None,
 })
