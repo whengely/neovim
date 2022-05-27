@@ -1,4 +1,5 @@
 local colors = require("theme").colors
+local List = require("plenary.collections.py_list")
 
 local vi_mode_colors = {
     NORMAL = colors.green,
@@ -30,8 +31,11 @@ local function file_osinfo()
     return icon .. os
 end
 
-local lsp_get_diag = function(str)
-    local count = vim.lsp.diagnostic.get(0, str)
+local lsp_get_diag = function(severity)
+    local diagnostics = List(vim.diagnostic.get(0, {severity = severity}))
+    print(diagnostics)
+    local count = diagnostics:__len()
+    print(count)
     return (count > 0) and " " .. count .. " " or ""
 end
 
@@ -136,7 +140,7 @@ local comps = {
         err = {
             -- provider = 'diagnostic_errors',
             provider = function()
-                return "" .. lsp_get_diag("Error")
+                return "" .. lsp_get_diag(vim.diagnostic.severity.ERROR)
             end,
             -- left_sep = ' ',
             enabled = function()
@@ -147,7 +151,7 @@ local comps = {
         warn = {
             -- provider = 'diagnostic_warnings',
             provider = function()
-                return "" .. lsp_get_diag("Warn")
+                return "" .. lsp_get_diag(vim.diagnostic.severity.WARN)
             end,
             -- left_sep = ' ',
             enabled = function() return lsp.diagnostics_exist("Warn") end,
@@ -156,7 +160,7 @@ local comps = {
         info = {
             -- provider = 'diagnostic_info',
             provider = function()
-                return "" .. lsp_get_diag("Info")
+                return "" .. lsp_get_diag(vim.diagnostic.severity.INFO)
             end,
             -- left_sep = ' ',
             enabled = function() return lsp.diagnostics_exist("Info") end,
@@ -165,7 +169,7 @@ local comps = {
         hint = {
             -- provider = 'diagnostic_hints',
             provider = function()
-                return "" .. lsp_get_diag("Hint")
+                return "" .. lsp_get_diag(vim.diagnostic.severity.HINT)
             end,
             -- left_sep = ' ',
             enabled = function() return lsp.diagnostics_exist("Hint") end,

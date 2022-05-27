@@ -93,14 +93,20 @@ local mappings = {
     ["]"] = {"<cmd>bn<cr>", "Go previous buffer"},
     ["["] = {"<cmd>bp<cr>", "Go next buffer"},
     c = {"<cmd>bd<cr>", "Close current buffer"},
-    b = {
-        "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-        "Buffers"
-    },
     f = {
         "<cmd>Telescope find_files hidden=true no_ignore=true<cr>", "Find File"
     },
     F = {"<cmd>Telescope live_grep<cr>", "Find File by grep"},
+
+    b = {
+        name = "Buffers",
+        b = {
+            "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+            "Buffers"
+        },
+        n = {"<cmd>bnext<cr>", "Next"},
+        p = {"<cmd>bprev<cr>", "Previous"}
+    },
 
     p = {
         name = "Packer",
@@ -130,7 +136,6 @@ local mappings = {
 
     l = {
         name = "LSP",
-        -- a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
         a = {"<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action"},
         d = {
             "<cmd>Telescope lsp_document_diagnostics<cr>",
@@ -146,7 +151,7 @@ local mappings = {
         j = {"<cmd>lua vim.diagnostic.goto_next()<CR>", "Next Diagnostic"},
         k = {"<cmd>lua vim.diagnostic.goto_prev()<cr>", "Prev Diagnostic"},
         l = {"<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action"},
-        q = {"<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix"},
+        q = {"<cmd>lua vim.diagnostic.set_loclist()<cr>", "Quickfix"},
         r = {"<cmd>lua vim.lsp.buf.rename()<cr>", "Rename"},
         s = {"<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols"},
         S = {
