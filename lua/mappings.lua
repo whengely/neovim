@@ -90,8 +90,8 @@ local mappings = {
     },
     e = {"<cmd>NvimTreeToggle<cr> <cmd>NvimTreeRefresh<cr>", "Nvim Tree Toggle"},
     R = {"<cmd>NvimTreeRefresh<cr>", "Nvim Tree Refresh"},
-    ["]"] = {"<cmd>bn<cr>", "Go previous buffer"},
-    ["["] = {"<cmd>bp<cr>", "Go next buffer"},
+    ["]"] = {"<cmd>bprev<cr>", "Previous buffer"},
+    ["["] = {"<cmd>bnext<cr>", "Next buffer"},
     c = {"<cmd>bd<cr>", "Close current buffer"},
     f = {
         "<cmd>Telescope find_files hidden=true no_ignore=true<cr>", "Find File"
