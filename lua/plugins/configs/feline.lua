@@ -33,9 +33,7 @@ end
 
 local lsp_get_diag = function(severity)
     local diagnostics = List(vim.diagnostic.get(0, {severity = severity}))
-    print(diagnostics)
     local count = diagnostics:__len()
-    print(count)
     return (count > 0) and " " .. count .. " " or ""
 end
 
