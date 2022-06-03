@@ -6,26 +6,18 @@ end
 
 local signs = require("utils").signs
 
-vim.g.nvim_tree_special_files = {}
-vim.g.nvim_tree_add_trailing = 1
-vim.g.nvim_tree_show_icons = {
-    git = 1,
-    folders = 1,
-    files = 1,
-    folder_arrows = 0,
-}
-vim.g.nvim_tree_icons = {
+local glyphs = {
     default = "",
     symlink = "",
-    git = {
-        unstaged = "[]",
-        staged = "[ﰶ]",
-        unmerged = "[]",
-        renamed = "[➜]",
-        untracked = "[]",
-        deleted = "[﯀]",
-        ignored = "[]",
-    },
+    --git = {
+    --    unstaged = "[x]",--"[]",
+     --   staged = "[ﰶ]",
+     --   unmerged = "[]",
+     --   renamed = "[➜]",
+      --  untracked = "[]",
+      --  deleted = "[﯀]",
+     --   ignored = "[]",
+    --},
     folder = {
         arrow_open = "",
         arrow_closed = "",
@@ -43,6 +35,7 @@ nvimtree.setup {
     disable_netrw = true,
     sort_by = "name",
     renderer = {
+      add_trailing = 1,
         indent_markers = {
             enable = true,
             icons = {
@@ -53,7 +46,16 @@ nvimtree.setup {
         },
         icons = {
             webdev_colors = true,
+            glyphs = glyphs,
+            show = {
+    git = true,
+    folder = true,
+    file = true,
+    folder_arrow = false,
+},
+
         },
+special_files = {},
     },
     hijack_netrw = true,
     open_on_setup = false,
