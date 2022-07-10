@@ -97,6 +97,7 @@ local mappings = {
         "<cmd>Telescope find_files hidden=true no_ignore=true<cr>", "Find File"
     },
     F = {"<cmd>Telescope live_grep<cr>", "Find File by grep"},
+    K = {"<cmd>lua vim.lsp.buf.hover()<cr>", "Hover"},
 
     b = {
         name = "Buffers",
