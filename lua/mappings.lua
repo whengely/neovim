@@ -79,15 +79,6 @@ local opts = {
 
 local mappings = {
     ["a"] = {"<cmd>Alpha<cr>", "Alpha"},
-    -- [[Illuminate]]
-    ["<Tab>"] = {
-        "<cmd>lua require'illuminate'.next_reference{wrap=true}<cr>",
-        "[ILLUMINATE] Next reference"
-    },
-    ["<S-Tab>"] = {
-        "<cmd>lua require'illuminate'.next_reference{reverse=true,wrap=true}<cr>",
-        "[ILLUMINATE] Next reference"
-    },
     e = {"<cmd>NvimTreeToggle<cr> <cmd>NvimTreeRefresh<cr>", "Nvim Tree Toggle"},
     R = {"<cmd>NvimTreeRefresh<cr>", "Nvim Tree Refresh"},
     ["]"] = {"<cmd>bprev<cr>", "Previous buffer"},

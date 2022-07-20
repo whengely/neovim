@@ -39,14 +39,14 @@ return packer.startup(function(use)
     --	config = require("plugins.configs.lualine"),
     --	requires = { "kyazdani42/nvim-web-devicons", opt = true },
     -- })
-    use({"feline-nvim/feline.nvim", config = require("plugins.configs.feline")})
+    -- use({"feline-nvim/feline.nvim", config = require("plugins.configs.feline")})
     use({
         "akinsho/bufferline.nvim",
         requires = {"kyazdani42/nvim-web-devicons"},
         config = require("plugins.configs.bufferline")
     })
     use({"folke/which-key.nvim"})
-    use({"karb94/neoscroll.nvim", config = require("plugins.configs.neoscroll")})
+    -- use({"karb94/neoscroll.nvim", config = require("plugins.configs.neoscroll")})
 
     -- Syntax
     use({
@@ -55,7 +55,7 @@ return packer.startup(function(use)
         run = ":TSUpdate",
         config = require("plugins.configs.treesitter")
     })
-    use({"stevearc/dressing.nvim", config = require("plugins.configs.dressing")})
+    -- use({"stevearc/dressing.nvim", config = require("plugins.configs.dressing")})
 
     -- Utilities
     use({
@@ -69,21 +69,21 @@ return packer.startup(function(use)
         config = require("plugins.configs.telescope")
     })
     use({"nvim-telescope/telescope-fzf-native.nvim", run = "make"})
-    use({
-        "lukas-reineke/indent-blankline.nvim",
-        config = require("plugins.configs.indent")
-    })
+    -- use({
+    --    "lukas-reineke/indent-blankline.nvim",
+    --    config = require("plugins.configs.indent")
+    -- })
     use({"windwp/nvim-autopairs", config = require("plugins.configs.autopairs")})
-    use({"tpope/vim-surround"})
+    -- use({"tpope/vim-surround"})
     use({
         "norcalli/nvim-colorizer.lua",
         config = require("plugins.configs.colorizer")
     })
-    use({"RRethy/vim-illuminate"})
-    use({
-        "akinsho/toggleterm.nvim",
-        config = require("plugins.configs.toggleterm")
-    })
+    -- use({"RRethy/vim-illuminate"})
+    -- use({
+    --    "akinsho/toggleterm.nvim",
+    --    config = require("plugins.configs.toggleterm")
+    -- })
 
     -- LSP
     use({
@@ -98,7 +98,7 @@ return packer.startup(function(use)
     })
 
     -- -- Comment
-    use({"numToStr/Comment.nvim", config = require("plugins.configs.comment")})
+    -- use({"numToStr/Comment.nvim", config = require("plugins.configs.comment")})
 
     -- -- Completion
     use({
@@ -114,14 +114,14 @@ return packer.startup(function(use)
     use({"David-Kunz/cmp-npm", config = require("plugins.configs.cmp-npm")}) -- package.json completion
 
     -- -- Snippets
-    use({"kitagry/vs-snippets"})
-    use({
-        "dsznajder/vscode-es7-javascript-react-snippets",
-        run = "yarn install --frozen-lockfile && yarn compile"
-    })
+    -- use({"kitagry/vs-snippets"})
+    -- use({
+    --    "dsznajder/vscode-es7-javascript-react-snippets",
+    --    run = "yarn install --frozen-lockfile && yarn compile"
+    -- })
 
     -- Tmux
-    use({"aserowy/tmux.nvim", config = require("plugins.configs.tmux")})
+    -- use({"aserowy/tmux.nvim", config = require("plugins.configs.tmux")})
 
     -- Git
     use({

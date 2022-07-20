@@ -87,8 +87,6 @@ local on_attach = function(client, bufnr)
             command = "LspFormatting"
         })
     end
-
-    require("illuminate").on_attach(client)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

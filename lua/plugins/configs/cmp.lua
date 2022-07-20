@@ -47,7 +47,7 @@ local kind_icons = {
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
-local next = function(fallback)
+local nextMapping = cmp.mapping(function(fallback)
     if cmp.visible() then
         cmp.select_next_item()
     elseif vim.fn["vsnip#available"](1) == 1 then
@@ -57,18 +57,18 @@ local next = function(fallback)
     else
         fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
     end
-end
+end, {"i", "s"})
 
-local previous = function()
+local previousMapping = cmp.mapping(function()
     if cmp.visible() then
         cmp.select_prev_item()
     elseif vim.fn["vsnip#jumpable"](-1) == 1 then
         feedkey("<Plug>(vsnip-jump-prev)", "")
     end
-end
+end, {"i", "s"})
 
 cmp.setup({
-    experimental = {native_menu = false, ghost_text = false},
+    experimental = {ghost_text = true},
     confirmation = {get_commit_characters = function() return {} end},
     completion = {
         completeopt = "menu,menuone,noinsert",
@@ -76,11 +76,11 @@ cmp.setup({
         keyword_length = 1
     },
     mapping = {
-        ["<ESC>"] = cmp.mapping.close(),
-        ["<Tab>"] = cmp.mapping(next, {"i", "s"}),
-        ["<DOWN>"] = cmp.mapping(next, {"i", "s"}),
-        ["<S-Tab>"] = cmp.mapping(previous, {"i", "s"}),
-        ["<UP>"] = cmp.mapping(previous, {"i", "s"}),
+        ["<Esc>"] = cmp.mapping.abort(),
+        ["<Tab>"] = nextMapping,
+        ["<Down>"] = nextMapping,
+        ["<S-Tab>"] = previousMapping,
+        ["<Up>"] = previousMapping,
         ["<CR>"] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
             select = false
